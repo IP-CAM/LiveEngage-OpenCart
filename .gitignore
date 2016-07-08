@@ -1,0 +1,7 @@
+.idea
+docker-files
+docker-config
+build
+2.2.0.0-compiled
+examples
+node_modules

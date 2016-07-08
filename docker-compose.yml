@@ -1,0 +1,25 @@
+opencart:
+  image: vimagick/opencart
+  ports:
+    - "80:80"
+  links:
+    - db
+  volumes:
+   #  - c:/projects/liveperson/Opencart/2.2.0.0-compiled/upload/catalog/view/theme:/var/www/html/catalog/view/theme
+     - ./docker-config/config-admin.php:/var/www/html/admin/config.php
+     - ./docker-config/config.php:/var/www/html/config.php
+   #  - ./src/admin/controller/module/live_engage.php:/var/www/html/admin/controller/module/live_engage.php
+   #  - ./src/admin/language/en-gb/module/live_engage.php:/var/www/html/admin/language/en-gb/module/live_engage.php
+   #  - ./src/admin/view/template/module/live_engage.tpl:/var/www/html/admin/view/template/module/live_engage.tpl
+   #  - ./src/catalog/controller/module:/var/www/html/catalog/module
+   #  - ./src/catalog/view/theme/default/template/module/live_engage.tpl:/var/www/html/catalog/view/theme/default/template/module/live_engage.tpl
+     - ./docker-files/admin:/var/www/html/admin
+     - ./docker-files/catalog:/var/www/html/catalog
+
+db:
+  image: mariadb
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=opencart
+  volumes:
+    - /var/lib/mysql

@@ -1,0 +1,14 @@
+{
+  "name": "liveengage-for-opencart",
+  "version": "1.0.0",
+  "description": "LiveEngage extention for OpenCart",
+  "main": "Gruntfile.js",
+  "author": "Doug Cone",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-zip": "^0.17.1"
+  }
+}
