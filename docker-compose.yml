@@ -1,20 +1,20 @@
 opencart:
-  image: vimagick/opencart
+  build: .
   ports:
     - "80:80"
+    - "9000:9000"
   links:
     - db
   volumes:
-   #  - c:/projects/liveperson/Opencart/2.2.0.0-compiled/upload/catalog/view/theme:/var/www/html/catalog/view/theme
      - ./docker-config/config-admin.php:/var/www/html/admin/config.php
      - ./docker-config/config.php:/var/www/html/config.php
-   #  - ./src/admin/controller/module/live_engage.php:/var/www/html/admin/controller/module/live_engage.php
-   #  - ./src/admin/language/en-gb/module/live_engage.php:/var/www/html/admin/language/en-gb/module/live_engage.php
-   #  - ./src/admin/view/template/module/live_engage.tpl:/var/www/html/admin/view/template/module/live_engage.tpl
-   #  - ./src/catalog/controller/module:/var/www/html/catalog/module
-   #  - ./src/catalog/view/theme/default/template/module/live_engage.tpl:/var/www/html/catalog/view/theme/default/template/module/live_engage.tpl
      - ./docker-files/admin:/var/www/html/admin
      - ./docker-files/catalog:/var/www/html/catalog
+     - ./docker-files/system/library:/var/www/html/system/library
+     - ./docker-files/krumo:/var/www/html/krumo
+  environment:
+     - XDEBUG_CONFIG=xdebug.remote_connect_back=1
+     - PHP_IDE_CONFIG=serverName=docker
 
 db:
   image: mariadb
@@ -23,3 +23,9 @@ db:
     - MYSQL_DATABASE=opencart
   volumes:
     - /var/lib/mysql
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin:latest
+  ports:
+    - "8080:80"
+  links:
+    - db:db

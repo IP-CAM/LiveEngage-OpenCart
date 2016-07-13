@@ -14,10 +14,10 @@ $_['text_edit']        = 'Edit LivePerson LiveEngage Widget';
 
 
 // Admin form
-$_['form_liveengage_id'] = 'LivePerson Account Number';
+$_['form_live_engage_id'] = 'LivePerson Account Number';
 $_['form_enabled']       = 'Enable';
 
 
 // Error
 $_['error_permission'] = 'Warning: You do not have permission to modify the LivePerson LiveEngage module!';
-$_['error_liveengage_id'] = 'LivePerson account number is Required!';
+$_['error_live_engage_id'] = 'LivePerson account number is Required!';

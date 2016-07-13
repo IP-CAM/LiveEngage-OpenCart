@@ -31,21 +31,21 @@ echo $column_left;
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-liveengage" class="form-horizontal">
          
           <div class="form-group required">
-            <label class="col-sm-2 control-label" for="liveengage_id"><?php echo $form_liveengage_id; ?></label>
+            <label class="col-sm-2 control-label" for="live-engage-id"><?php echo $form_live_engage_id; ?></label>
             <div class="col-sm-10">
-              <input type="text" name="liveengage_id" id="liveengage-id" class="form-control" value="<?php echo $liveengage_id; ?>" />
+              <input type="text" name="live_engage_id" id="live-engage-id" class="form-control" value="<?php echo $live_engage_id; ?>" />
 
-              <?php if ($error_liveengage_id) { ?>
-              <div class="text-danger"><?php echo $error_liveengage_id; ?></div>
+              <?php if ($error_live_engage_id) { ?>
+              <div class="text-danger"><?php echo $error_live_engage_id; ?></div>
               <?php } ?>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-test"><?php echo $form_enabled; ?></label>
+            <label class="col-sm-2 control-label" for="input-liveengage"><?php echo $form_enabled; ?></label>
             <div class="col-sm-10">
-              <select name="liveengage_status" id="input-liveengage" class="form-control">
-                <option value="<?php echo $text_off;?>" <?php echo ($liveengage_status == $text_off ? ' selected="selected"' : '')?>><?php echo $text_off; ?></option>
-                <option value="<?php echo $text_on;?>" <?php echo ($liveengage_status == $text_on ? ' selected="selected"' : '')?>><?php echo $text_on; ?></option>
+              <select name="live_engage_status" id="input-liveengage" class="form-control">
+                <option value="0" <?php echo ($live_engage_status == 0 ? ' selected="selected"' : '')?>><?php echo $text_off; ?></option>
+                <option value="1" <?php echo ($live_engage_status == 1 ? ' selected="selected"' : '')?>><?php echo $text_on; ?></option>
               </select>
             </div>
           </div>
