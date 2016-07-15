@@ -19,7 +19,6 @@ class ControllerModuleLiveEngage extends Controller {
 			                  "'live_engage', position = " .
 			                  "'content_bottom', sort_order = '99' " );
 		}
-		doug_debug("install ran");
 	}
 
 	public function index() {

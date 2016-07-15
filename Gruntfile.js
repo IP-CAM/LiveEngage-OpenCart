@@ -17,26 +17,22 @@ module.exports = function(grunt) {
                 ]
             }
         },
-        zip: {
-            'using-router': {
-                // `router` receives the path from grunt (e.g. js/main.js)
-                // The path it returns is what the file contents are saved as (e.g. all/main.js)
-                router: function (filepath) {
-                    // Route each file to all/{{filename}}
-                    var filename = path.basename(filepath);
-                    if (filepath.indexOf("install.xml") === -1) return 'upload/' + filename;
-                    return filename;
+        compress: {
+            main: {
+                options: {
+                    archive: 'build/live_engage.ocmod.zip'
                 },
 
-                // Files will zip to 'main.js' and 'main.css'
-                src: ['src/install.xml', 'src/admin', 'src/catalog'],
-                dest: 'build/liveengage.ocmod.zip'
+                files: [
+                    {expand: true, cwd: 'src/', src: ['admin/**'], dest: 'upload/' },
+                    {expand: true, cwd: 'src/', src: ['catalog/**'], dest: 'upload/'},
+                    {expand: true, cwd: 'src/', src: ['install.xml'], dest: '/'}
+                ]
             }
         }
     });
 
-    // Load in `grunt-zip`
-    grunt.loadNpmTasks('grunt-zip');
+    grunt.loadNpmTasks('grunt-contrib-compress');
     //load watch
     grunt.loadNpmTasks('grunt-contrib-watch');
     //load copy

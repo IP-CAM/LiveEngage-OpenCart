@@ -2,16 +2,19 @@ opencart:
   build: .
   ports:
     - "80:80"
-    - "9000:9000"
+#    - "9000:9000"
   links:
     - db
+    - ftp
   volumes:
+     - webroot:/var/www/html
      - ./docker-config/config-admin.php:/var/www/html/admin/config.php
      - ./docker-config/config.php:/var/www/html/config.php
-     - ./docker-files/admin:/var/www/html/admin
-     - ./docker-files/catalog:/var/www/html/catalog
-     - ./docker-files/system/library:/var/www/html/system/library
-     - ./docker-files/krumo:/var/www/html/krumo
+     - ./docker-files/logs:/var/www/html/logs
+  #   - ./docker-files/admin:/var/www/html/admin
+  #   - ./docker-files/catalog:/var/www/html/catalog
+  #   - ./docker-files/system/library:/var/www/html/system/library
+  #   - ./docker-files/krumo:/var/www/html/krumo
   environment:
      - XDEBUG_CONFIG=xdebug.remote_connect_back=1
      - PHP_IDE_CONFIG=serverName=docker
@@ -29,3 +32,28 @@ phpmyadmin:
     - "8080:80"
   links:
     - db:db
+#sftp:
+#  image: atmoz/sftp
+#  #volumes_from:
+#  #  - opencart
+#  volumes:
+# #   - ./docker-config/ftp-init:/etc/sftp.d/ftp-init
+#    - webroot:/home/ftpuser
+#  ports:
+#    - "2222:22"
+#  command: ftpuser:ftppass:1001
+ftp:
+  image: helder/vsftpd
+  volumes:
+    - webroot:/var/ftp/ftpuser
+  ports:
+    - "21:21"
+  environment:
+    - FTP_VIRT_USER=ftpuser
+    - FTP_VIRT_PASS=ftppass
+#ngrok:
+#  image: wizardapps/ngrok
+#  environment:
+#    -
+#  links:
+#    - opencart:http
