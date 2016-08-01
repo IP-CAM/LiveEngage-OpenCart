@@ -34,7 +34,7 @@ echo $column_left;
             <label class="col-sm-2 control-label" for="live-engage-id"><?php echo $form_live_engage_id; ?></label>
             <div class="col-sm-10">
               <input type="text" name="live_engage_id" id="live-engage-id" class="form-control" value="<?php echo $live_engage_id; ?>" />
-
+              <p>Don't have a LivePerson account? Get one <a href="https://register.liveperson.com/opencart">here</a></p>
               <?php if ($error_live_engage_id) { ?>
               <div class="text-danger"><?php echo $error_live_engage_id; ?></div>
               <?php } ?>

@@ -10,14 +10,15 @@ opencart:
      - webroot:/var/www/html
      - ./docker-config/config-admin.php:/var/www/html/admin/config.php
      - ./docker-config/config.php:/var/www/html/config.php
-     - ./docker-files/logs:/var/www/html/logs
+  #   - ./docker-files/logs:/var/www/html/logs
   #   - ./docker-files/admin:/var/www/html/admin
   #   - ./docker-files/catalog:/var/www/html/catalog
   #   - ./docker-files/system/library:/var/www/html/system/library
   #   - ./docker-files/krumo:/var/www/html/krumo
   environment:
-     - XDEBUG_CONFIG=xdebug.remote_connect_back=1
-     - PHP_IDE_CONFIG=serverName=docker
+    - OC_DOMAIN=docker #6bc0802f.ngrok.io
+    - XDEBUG_CONFIG=xdebug.remote_connect_back=1
+    - PHP_IDE_CONFIG=serverName=docker
 
 db:
   image: mariadb
